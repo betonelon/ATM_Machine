@@ -21,9 +21,6 @@ int main() {
     cout << "\t*                                                         *" << endl;
     cout << "\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *" << endl;
 
-
-
-
     //GOTO statement that will iterate every time user enters an incorrect pin #
     check_pin_number:
 
@@ -65,7 +62,6 @@ int main() {
     } else
         goto start_transaction;
 
-
     start_transaction:
     cout << "\tYour pin has been accepted!!" << endl;
 
@@ -77,7 +73,6 @@ int main() {
     cout << "\t*                     3. Deposit                          *" << endl;
     cout << "\t*                     4. Exit                             *" << endl;
     cout << "\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *" << endl;
-
 
     while (option < 4) {
 
