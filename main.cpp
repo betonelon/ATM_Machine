@@ -1,18 +1,19 @@
 #include <iostream>
+
 using namespace std;
 
-int main(){
+int main() {
 
     // MEMBER VARIABLES: for PIN #
-    int     pin_number,
+    int pin_number,
             user_tries = 0;
 
     // MEMBER VARIABLES: for ATM Machine
-    float   deposit = 0,
+    float deposit = 0,
             balance = 5000,
             withdraw = 0;
 
-    int     option = 0;
+    int option = 0;
 
     cout << "\n\n\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *" << endl;
     cout << "\t*                                                         *" << endl;
@@ -21,49 +22,49 @@ int main(){
     cout << "\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *" << endl;
 
 
-    do {
 
-        //GOTO statement that will iterate every time user enters an incorrect pin #
-        check_pin_number:
 
-        cout << "\n\tPlease enter your 4 digit pin number:" ;
-        cin >> pin_number;
+    //GOTO statement that will iterate every time user enters an incorrect pin #
+    check_pin_number:
 
-        // the length of 0 is 1
-        int len = 1;
+    cout << "\n\tPlease enter your 4 digit pin number:";
+    cin >> pin_number;
 
-        // finds the length of the pin number:
-        // and for numbers greater than 0
-        if (pin_number > 0) {
+    // the length of 0 is 1
+    int len = 0;
 
-            // count how many times it can be divided by 10:
-            // ( how many times can we cut off the last digits until we have 0 )
-            for (len = 0; pin_number > 0; len++) {
-                pin_number = pin_number / 10;
-            }
-        }
+    // finds the length of the pin number:
+    // and for numbers greater than 0
+    if (pin_number > 9999) {
+        len = 5;
+    } else if (pin_number > 999) {
+        len = 4;
+    } else if (pin_number > 99) {
+        len = 3;
+    } else if (pin_number > 9) {
+        len = 2;
+    } else
+        len = 1; // any integer larger than 9999 and smaller than 9 will default to 1
 
-        // will determine what happens if user inputs an invalid pin number:
-        if (len != 4) {
+    // will determine what happens if user inputs an invalid pin number:
+    if (len != 4) {
 
-            user_tries++; // increment the wrong pin as a try
-            cout << "\tIncorrect amount of pin number!!" << endl;
+        user_tries++; // increment the wrong pin as a try
+        cout << "\tIncorrect amount of pin number!!" << endl;
 
-            // allow the user to renter a value for the pin number:
-            cin.clear();
-            cin.ignore(1000, '\n');
+        // allow the user to renter a value for the pin number:
+        cin.clear();
+        cin.ignore(1000, '\n');
 
-            if (user_tries == 3) {
-            cout << "\tYou've exceeded the number of attempts." << endl;
+        if (user_tries == 3) {
+            cout << "\n\tYou've exceeded the number of attempts." << endl;
             exit(0);
-            }
-            // cin >> pin_number;
-            goto check_pin_number;
-        } else
-            goto start_transaction;
+        }
+        // cin >> pin_number;
+        goto check_pin_number;
+    } else
+        goto start_transaction;
 
-
-    } while (user_tries < 4);
 
     start_transaction:
     cout << "\tYour pin has been accepted!!" << endl;
@@ -78,7 +79,7 @@ int main(){
     cout << "\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *" << endl;
 
 
-    while(option < 4 ) {
+    while (option < 4) {
 
         cout << "\n\tPlease enter the option that you would like:";
         cin >> option;
@@ -87,13 +88,13 @@ int main(){
             case 1:
                 cout << "\n\tYour current balance is: " << balance << endl;
                 cin.clear();
-                cin.ignore(10000,'\n');
+                cin.ignore(10000, '\n');
                 break;
             case 2:
                 cout << "\n\tEnter the amount you want to withdraw: ";
 
                 cin.clear();
-                cin.ignore(10000,'\n');
+                cin.ignore(10000, '\n');
 
                 cin >> withdraw;
 
@@ -110,7 +111,7 @@ int main(){
                 cout << "\n\tEnter the amount you want to deposit: ";
 
                 cin.clear();
-                cin.ignore(10000,'\n');
+                cin.ignore(10000, '\n');
 
                 cin >> deposit;
 
@@ -122,12 +123,12 @@ int main(){
             case 4:
                 cout << "\n\tThanks for using our service!" << endl;
                 cin.clear();
-                cin.ignore(10000,'\n');
+                cin.ignore(10000, '\n');
                 break;
             default:
 
                 cin.clear();
-                cin.ignore(10000,'\n');
+                cin.ignore(10000, '\n');
 
                 cout << "\n\tPlease enter a valid choice and try again: ";
                 break;
